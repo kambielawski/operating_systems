@@ -22,11 +22,7 @@ int main(int argc, char *argv[]) {
     printf("fork failed!!!\n");
     exit(1);
   } else if (rc == 0) {
-    int num_args = 2;
-    char *args[num_args];
-    args[0] = input;
-    args[1] = NULL;
-    execvp(args[0], args);
+    execlp(input, input, NULL);
   } else {
     wait(NULL);
     if (!strncmp(input, strdup("quit"), 4)) {
