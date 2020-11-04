@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -14,9 +15,12 @@ int main(int argc, char *argv[]) {
     printf("failed to fork da fork\n");
     exit(1);
   } else if (rc == 0) {
+    close(STDOUT_FILENO);
     char *childtext = "cccccccccc";
+    printf("%s", childtext);
     fwrite(childtext, 1, 10, fp);    
   } else {
+    wait(NULL);
     char *parenttext = "pppppppppp";
     fwrite(parenttext, 1, 10, fp);
   }

@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     execvp(inputToWords[0], inputToWords);
   } else {
     wait(NULL);
-    if (!strncmp(input, strdup("quit"), 4)) {
+    if (!strncmp(inputToWords[0], strdup("quit"), 4)) {
       return 0;
     } else {
       char *nextcall[2];
@@ -63,3 +63,4 @@ int main(int argc, char *argv[]) {
   
   return 0;
 }
+
