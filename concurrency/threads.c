@@ -3,7 +3,7 @@
 #include <assert.h>
 
 void *threadfunc(void *arg) {
-  printf("%s\n", (char *) arg);
+  printf("%s, threadid: %ld\n", (char *) arg, (long) pthread_self()); // pthread_self returns pthread handle of the thread
   return NULL;
 }
 
